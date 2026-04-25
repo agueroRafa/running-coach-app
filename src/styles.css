@@ -1,9 +1,9 @@
 :root {
-  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  font-family: "Poppins", "Inter", "Segoe UI", Roboto, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #f6f0ff;
-  background-color: #070410;
+  color: #f9f5ff;
+  background-color: #0d0227;
 }
 
 * {
@@ -13,34 +13,47 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #070410;
+  background: radial-gradient(circle at 20% 15%, #2be4ff2e 0%, transparent 40%),
+    radial-gradient(circle at 80% 10%, #ff5ebc3b 0%, transparent 38%),
+    radial-gradient(circle at 50% 80%, #ffd84e2e 0%, transparent 42%),
+    #0d0227;
+  color: #f9f5ff;
 }
 
 .app-shell {
   min-height: 100vh;
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .app-shell::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("https://images.unsplash.com/photo-1486218119243-13883505764c?auto=format&fit=crop&w=1600&q=80");
-  background-size: cover;
-  background-position: center;
-  filter: blur(7px) brightness(0.45) saturate(1.15);
-  transform: scale(1.05);
+  background: conic-gradient(
+    from 110deg at 25% 30%,
+    #ff4b9a99,
+    #ffa34cb3,
+    #ffe74ab3,
+    #3ae8ff99,
+    #8b6bffb3,
+    #ff4b9a99
+  );
+  filter: blur(90px) saturate(1.25);
+  transform: scale(1.2);
   z-index: 0;
+  opacity: 0.65;
 }
 
 .background-overlay {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at 15% 20%, #ff8f6b66 0%, transparent 45%),
-    radial-gradient(circle at 80% 15%, #89e2ff4a 0%, transparent 35%),
-    radial-gradient(circle at 50% 90%, #d99dff38 0%, transparent 40%),
-    linear-gradient(140deg, #1a1230cc 0%, #080510f0 70%);
+  background: radial-gradient(circle at 15% 20%, #ff9a3d52 0%, transparent 42%),
+    radial-gradient(circle at 84% 18%, #7a53ff52 0%, transparent 34%),
+    radial-gradient(circle at 30% 82%, #14d8ff47 0%, transparent 38%),
+    radial-gradient(circle at 78% 76%, #ff4ba94d 0%, transparent 34%),
+    linear-gradient(145deg, #16053ecc 0%, #0b0328f0 70%);
   z-index: 1;
 }
 
@@ -51,17 +64,33 @@ body {
   margin: 0 auto;
   padding: 2.5rem 0 3rem;
   display: grid;
-  gap: 1.4rem;
+  gap: 1.25rem;
 }
 
 .hero,
 .calendar-card,
 .detail-card {
-  backdrop-filter: blur(10px);
-  background: linear-gradient(135deg, #20163cba, #0f0c23ad);
-  border: 1px solid #ffffff29;
+  backdrop-filter: blur(14px);
+  background: linear-gradient(140deg, #2b1453c7, #190a3eb8 45%, #160834bf);
+  border: 1px solid #ffffff33;
   border-radius: 24px;
-  box-shadow: 0 24px 40px #00000047;
+  box-shadow: 0 18px 48px #0701138a;
+  position: relative;
+}
+
+.hero::after,
+.calendar-card::after,
+.detail-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(130deg, #ffb74b99, #3be8ff85, #b46bff8c);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .hero {
@@ -70,30 +99,31 @@ body {
 
 .kicker {
   margin: 0;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   font-weight: 700;
   text-transform: uppercase;
-  color: #ffd5a6;
+  color: #ffd86f;
   font-size: 0.75rem;
 }
 
 h1 {
   margin: 0.4rem 0 0;
   font-size: clamp(1.8rem, 4vw, 2.7rem);
-  color: #fff4eb;
+  color: #fff8ff;
+  text-shadow: 0 2px 18px #ff6ab869;
 }
 
 .subtitle {
   margin: 0.6rem 0 0;
   max-width: 75ch;
-  color: #ebdeff;
+  color: #efe6ff;
 }
 
 .subtitle code {
   margin: 0 0.3rem;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.87rem;
-  color: #9fe7ff;
+  color: #76f0ff;
 }
 
 .calendar-card,
@@ -105,7 +135,7 @@ h2,
 h3,
 h4 {
   margin-top: 0;
-  color: #ffffff;
+  color: #fff7ff;
 }
 
 .calendar-grid {
@@ -116,36 +146,38 @@ h4 {
 
 .day-card {
   text-align: left;
-  border: 1px solid #ffffff1f;
+  border: 1px solid #ffffff30;
   border-radius: 18px;
   padding: 0.9rem 0.85rem;
-  background: linear-gradient(130deg, #ffffff10, #ffffff04);
-  color: #f7f2ff;
+  background: linear-gradient(135deg, #ffffff17, #ffffff08 40%, #ff65b014);
+  color: #fbf7ff;
   display: grid;
   gap: 0.35rem;
   cursor: pointer;
-  transition: transform 120ms ease, border-color 120ms ease, background 140ms ease;
+  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease,
+    box-shadow 140ms ease;
 }
 
 .day-card:hover {
-  transform: translateY(-2px);
-  border-color: #ffd4ba99;
+  transform: translateY(-3px) scale(1.01);
+  border-color: #ffe082cc;
+  box-shadow: 0 10px 22px #06011166;
 }
 
 .day-card.active {
-  background: linear-gradient(135deg, #ff9f7f47, #8be8ff3f);
-  border-color: #ffd4ba;
+  background: linear-gradient(130deg, #ff73b359, #3de9ff57 55%, #ffcf5861);
+  border-color: #ffe173;
 }
 
 .day-date {
-  color: #ffdabf;
+  color: #ffe7a8;
   font-size: 0.8rem;
   text-transform: uppercase;
 }
 
 .detail-date {
   margin-top: -0.4rem;
-  color: #ffcfaa;
+  color: #ffd780;
 }
 
 .detail-metrics {
@@ -158,15 +190,15 @@ h4 {
 .detail-metrics span {
   padding: 0.25rem 0.55rem;
   border-radius: 999px;
-  background: #ffffff14;
-  border: 1px solid #ffffff24;
-  color: #dff8ff;
+  background: linear-gradient(120deg, #ffffff22, #ffffff10);
+  border: 1px solid #ffffff3a;
+  color: #d9f7ff;
   font-size: 0.9rem;
 }
 
 .detail-description {
   margin: 0;
-  color: #f2e9ff;
+  color: #f8f0ff;
 }
 
 @media (max-width: 740px) {
