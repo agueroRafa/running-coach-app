@@ -41,7 +41,7 @@ export const monthPlan = {
     {
       date: "2026-05-01",
       title: "Fuerza + Caminata",
-      distance: "Caminata: 20 minutos,
+      distance: "Caminata: 20 minutos",
       effort: "RPE 2/10",
       summary: "Consolidar fuerza específica.",
       detail:
